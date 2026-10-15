@@ -524,7 +524,16 @@ function Footer() {
       <div className="mx-auto max-w-7xl">
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
           <div className="lg:col-span-2">
-            <h2 className="font-serif text-4xl font-semibold text-[#fab026]">Fried-Chicks</h2>
+            <div className="flex items-center gap-4">
+              <Image
+                src="/images/fried-chicks-logo.png"
+                alt="Fried-Chicks logo"
+                width={88}
+                height={88}
+                className="h-20 w-20 object-contain"
+              />
+              <h2 className="font-serif text-4xl font-semibold text-[#fab026]">Fried-Chicks</h2>
+            </div>
             <p className="mt-4 max-w-md text-white/60">
               Premium fast food and authentic traditional cuisine, served fresh since 2020. Free home delivery across Kotmomin.
             </p>
@@ -580,8 +589,15 @@ function Navbar() {
   return (
     <nav className="fixed left-0 right-0 top-0 z-50 border-b border-white/5 bg-[#0c0a07]/70 backdrop-blur-xl">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-16">
-        <a href="#" className="font-serif text-2xl font-semibold text-[#fab026]">
-          Fried-Chicks
+        <a href="#" aria-label="Fried-Chicks home" className="flex items-center gap-2">
+          <Image
+            src="/images/fried-chicks-logo.png"
+            alt=""
+            width={48}
+            height={48}
+            className="h-12 w-12 object-contain"
+          />
+          <span className="font-serif text-xl font-semibold text-[#fab026]">Fried-Chicks</span>
         </a>
 
         <div className="hidden items-center gap-8 md:flex">
