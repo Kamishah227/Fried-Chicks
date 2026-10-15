@@ -227,134 +227,166 @@ const categories: {
   },
 ];
 
-const deals = [
+type DealCategory = 'pizza' | 'fc' | 'family' | 'broast';
+
+const dealCategories: { key: 'all' | DealCategory; title: string }[] = [
+  { key: 'all', title: 'All Deals' },
+  { key: 'pizza', title: 'Pizza Deals' },
+  { key: 'fc', title: 'FC Deals' },
+  { key: 'family', title: 'Family & Party' },
+  { key: 'broast', title: 'Broast' },
+];
+
+const deals: { category: DealCategory; title: string; tag: string; price: string; items: string[] }[] = [
   {
+    category: 'pizza',
     title: 'Pizza Deal D-1',
     tag: 'Pizza Deal',
     price: 'Rs 1,399',
     items: ['1 Small Pizza', '2 Zinger Burgers'],
   },
   {
+    category: 'pizza',
     title: 'Pizza Deal D-2',
     tag: 'Pizza Deal',
     price: 'Rs 1,790',
     items: ['1 Small Tikka Pizza', '2 Reggy Burgers'],
   },
   {
+    category: 'pizza',
     title: 'Pizza Deal D-3',
     tag: 'Pizza Deal',
     price: 'Rs 2,999',
     items: ['1 Large Tikka Pizza', '1 Litre Drink'],
   },
   {
+    category: 'pizza',
     title: 'Pizza Deal D-4',
     tag: 'Pizza Deal',
     price: 'Rs 2,999',
     items: ['1 Large Fajita Pizza', '4 Zinger Burgers', '1.5 Litre Drink'],
   },
   {
+    category: 'pizza',
     title: 'Pizza Deal D-5',
     tag: 'Family Feast',
     price: 'Rs 4,999',
     items: ['1 Extra Large Pizza', '5 Zinger Burgers'],
   },
   {
+    category: 'pizza',
     title: 'Pizza Deal D-6',
     tag: 'Pizza Deal',
     price: 'Rs 1,299',
     items: ['5 Hot Wings', '1 Small Pizza', '1 Regular Fries', '1 Litre Drink'],
   },
   {
+    category: 'pizza',
     title: 'Pizza Deal D-7',
     tag: 'Family Feast',
     price: 'Rs 4,499',
     items: ['2 Medium Tikka & Fajita Pizzas', '4 Chicken Shawarmas', '2 Kabab Bites', 'Regular Fries', '1.5 Litre Drink'],
   },
   {
+    category: 'family',
     title: 'Family Deal',
     tag: 'Family Feast',
     price: 'Rs 6,399',
     items: ['1 Extra Large Pizza', '10 Hot Wings', 'Family Fries', '1.5 Litre Drink'],
   },
   {
+    category: 'pizza',
     title: 'Late Night Deal 1',
     tag: 'After 10 PM · Until Closing',
     price: 'Rs 2,199',
     items: ['2 Regular 10-inch Pizzas', '1.5 Litre Drink'],
   },
   {
+    category: 'pizza',
     title: 'Late Night Deal 2',
     tag: 'After 10 PM · Until Closing',
     price: 'Rs 2,999',
     items: ['2 Regular 13-inch Pizzas', '1.5 Litre Drink'],
   },
   {
+    category: 'pizza',
     title: 'Late Night Deal 3',
     tag: 'After 10 PM · Until Closing',
     price: 'Rs 3,999',
     items: ['2 Regular 16-inch Pizzas', '1.5 Litre Drink'],
   },
   {
+    category: 'fc',
     title: 'FC Deal 1',
     tag: 'FC Special Deal',
     price: 'Rs 1,399',
     items: ['2 Beef Grill Burgers', '500 ml Drink'],
   },
   {
+    category: 'fc',
     title: 'FC Deal 2',
     tag: 'FC Special Deal',
     price: 'Rs 1,149',
     items: ['1 Reggy Burger', '1 Chapli Burger', '1 Small Pizza', '1 Litre Drink'],
   },
   {
+    category: 'fc',
     title: 'FC Deal 3',
     tag: 'FC Special Deal',
     price: 'Rs 1,799',
     items: ['1 Large Fries', '1.5 Litre Drink'],
   },
   {
+    category: 'fc',
     title: 'FC Deal 4',
     tag: 'FC Special Deal',
     price: 'Rs 2,599',
     items: ['1 Medium Tikka Pizza', '1 Half Rice Platter'],
   },
   {
+    category: 'fc',
     title: 'FC Deal 5',
     tag: 'FC Special Deal',
     price: 'Rs 3,499',
     items: ['4 Zinger Burgers'],
   },
   {
+    category: 'fc',
     title: 'FC Deal 6',
     tag: 'FC Special Deal',
     price: 'Rs 3,599',
     items: ['1 Medium Pizza', '1 Arabian Broast', '1 Macaroni Pasta', '1 kg Dhaka Chicken', '1 Large Fries', '1.5 Litre Drink'],
   },
   {
+    category: 'family',
     title: 'FC Special Birthday Deal',
     tag: 'Party Package · 6–8 People',
     price: 'Rs 10,999',
     items: ['2 Extra Large Pizzas', '20 Nuggets', '3 Family Fries', '1 kg FC Special Handi', '1 kg Chicken Kabab', '3 Full Chicken Biryani', '4 Mint Ritas', '2 Fresh Salads', '1.5 Litre Drink', '1.5 Litre Water', '20 Rotis', '1 Pound Birthday Cake'],
   },
   {
+    category: 'broast',
     title: 'Quarter Arabian Broast',
     tag: 'Arabian Broast',
     price: 'Rs 699',
     items: ['1 Leg & 1 Thigh', 'Garlic Sauce', 'Fries', 'Dinner Roll'],
   },
   {
+    category: 'broast',
     title: 'Half Arabian Broast',
     tag: 'Arabian Broast',
     price: 'Rs 1,199',
     items: ['2 Legs & 2 Thighs', 'Garlic Sauce', 'Fries', '2 Dinner Rolls'],
   },
   {
+    category: 'broast',
     title: 'Full Arabian Broast',
     tag: 'Arabian Broast',
     price: 'Rs 2,499',
     items: ['4 Legs & 4 Thighs', 'Garlic Sauce', 'Fries', '4 Dinner Rolls'],
   },
   {
+    category: 'broast',
     title: 'Family Arabian Broast',
     tag: 'Arabian Broast',
     price: 'Rs 4,500',
@@ -669,7 +701,12 @@ function Menu({
 /* ------------------------------------------------------------------ */
 
 function Deals({ reducedMotion }: { reducedMotion: boolean | null }) {
+  const [activeDealCategory, setActiveDealCategory] = useState<'all' | DealCategory>('all');
   const anim = reducedMotion ? {} : { initial: { opacity: 0, y: 40 }, whileInView: { opacity: 1, y: 0 } };
+  const visibleDeals =
+    activeDealCategory === 'all'
+      ? deals
+      : deals.filter((deal) => deal.category === activeDealCategory);
 
   return (
     <section id="deals" className="relative z-10 px-6 py-28 lg:px-16">
@@ -684,8 +721,35 @@ function Deals({ reducedMotion }: { reducedMotion: boolean | null }) {
           <h2 className="mt-3 font-serif text-[clamp(2.5rem,6vw,4.5rem)] font-semibold text-white">Special Deals</h2>
         </motion.div>
 
+        <div className="mb-10 flex flex-wrap justify-center gap-3" aria-label="Filter special deals">
+          {dealCategories.map((category) => {
+            const isActive = activeDealCategory === category.key;
+            const itemCount =
+              category.key === 'all'
+                ? deals.length
+                : deals.filter((deal) => deal.category === category.key).length;
+
+            return (
+              <button
+                key={category.key}
+                type="button"
+                aria-pressed={isActive}
+                onClick={() => setActiveDealCategory(category.key)}
+                className={`rounded-full border px-5 py-3 text-sm font-semibold transition-colors ${
+                  isActive
+                    ? 'border-[#fab026]/60 bg-[#fab026]/10 text-white'
+                    : 'border-white/10 bg-white/5 text-white/70 hover:border-white/30 hover:bg-white/10'
+                }`}
+              >
+                {category.title}
+                <span className="ml-2 text-xs text-[#fab026]">{itemCount}</span>
+              </button>
+            );
+          })}
+        </div>
+
         <div className="grid gap-8 md:grid-cols-2">
-          {deals.map((deal, i) => (
+          {visibleDeals.map((deal, i) => (
             <motion.div
               key={deal.title}
               initial={{ opacity: 0, y: 40 }}
