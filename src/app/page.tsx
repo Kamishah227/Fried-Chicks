@@ -774,9 +774,12 @@ function Deals({ reducedMotion }: { reducedMotion: boolean | null }) {
                     </li>
                   ))}
                 </ul>
-                <button className="mt-8 rounded-xl bg-[#fab026] px-8 py-3 font-bold text-[#1a1200] shadow-lg transition-transform hover:scale-105">
+                <a
+                  href="tel:0325-7866767"
+                  className="mt-8 inline-block rounded-xl bg-[#fab026] px-8 py-3 font-bold text-[#1a1200] shadow-lg transition-transform hover:scale-105"
+                >
                   Order Now
-                </button>
+                </a>
               </div>
             </motion.div>
           ))}
@@ -805,7 +808,7 @@ const GalleryImage = memo(function GalleryImage({
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="group relative overflow-hidden rounded-2xl will-change-transform"
+      className="group relative h-full overflow-hidden rounded-2xl will-change-transform"
     >
       <div className={`relative w-full ${large ? 'aspect-square lg:aspect-auto lg:h-full' : 'aspect-square'}`}>
         <Image
@@ -840,7 +843,7 @@ function Gallery({ reducedMotion }: { reducedMotion: boolean | null }) {
           <h2 className="mt-3 font-serif text-[clamp(2.5rem,6vw,4.5rem)] font-semibold text-white">From Our Kitchen</h2>
         </motion.div>
 
-        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-5 md:grid-cols-2 lg:auto-rows-[12rem] lg:grid-cols-4">
           {gallery.map((img, i) => (
             <div key={img.alt} className={i === 0 || i === 3 ? 'lg:col-span-2 lg:row-span-2' : ''}>
               <GalleryImage img={img} large={i === 0 || i === 3} index={i} />
