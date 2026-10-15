@@ -12,85 +12,353 @@ const navLinks = [
   { label: 'Contact', href: '#contact' },
 ];
 
-const categories: { key: CategoryKey; title: string; subtitle: string; items: { name: string; price: string; desc: string }[] }[] = [
+const categories: {
+  key: CategoryKey;
+  title: string;
+  subtitle: string;
+  items: { name: string; price: string; desc: string; group?: string }[];
+}[] = [
   {
     key: 'fastfood',
     title: 'Fast Food',
-    subtitle: 'Crispy, juicy, unforgettable',
+    subtitle: 'Burgers, wraps, rolls and more',
     items: [
-      { name: 'Mighty Zinger', price: 'Rs 650', desc: 'Double-decker crispy chicken fillet with secret sauce' },
-      { name: 'Dragon Burger', price: 'Rs 720', desc: 'Spicy flame-grilled patty, cheddar & jalapeños' },
-      { name: 'Chapli Burger', price: 'Rs 580', desc: 'Traditional chapli patty in a toasted brioche' },
-      { name: 'Matka Fries', price: 'Rs 320', desc: 'Crispy fries tossed in desi masala, served in a matka' },
+      { name: 'Double Maza Burger', price: 'Single Rs 499 · Deal Rs 699', desc: 'Beef burger with black pepper sauce.', group: 'Burgers' },
+      { name: 'Mighty Zinger', price: 'Single Rs 649 · Deal Rs 799', desc: 'Crispy chicken zinger burger.', group: 'Burgers' },
+      { name: 'Zinger Burger', price: 'Single Rs 399 · Deal Rs 599', desc: 'Classic crispy chicken burger.', group: 'Burgers' },
+      { name: 'Chapli Burger', price: 'Single Rs 299 · Deal Rs 499', desc: 'Chapli-style burger with a spicy desi flavour.', group: 'Burgers' },
+      { name: 'FC Special Burger', price: 'Single Rs 599 · Deal Rs 799', desc: 'The house special burger.', group: 'Burgers' },
+      { name: 'Dragon Burger', price: 'Single Rs 499 · Deal Rs 699', desc: 'A spicy burger with the restaurant’s signature sauce.', group: 'Burgers' },
+      { name: 'Cheese Blast Burger', price: 'Single Rs 599 · Deal Rs 799', desc: 'Burger with melted cheese.', group: 'Burgers' },
+      { name: 'Fish Burger', price: 'Single Rs 499 · Deal Rs 699', desc: 'Crispy fish burger.', group: 'Burgers' },
+      { name: 'Pizza Burger', price: 'Rs 599 · Deal Rs 699', desc: 'A pizza-inspired burger.', group: 'Burgers' },
+      { name: 'Karzima Burger', price: 'Rs 479 · Deal Rs 699', desc: 'House-style burger with black pepper sauce.', group: 'Burgers' },
+      { name: 'Reggy Burger', price: 'Rs 299 · Deal Rs 499', desc: 'Classic value burger.', group: 'Burgers' },
+      { name: 'Jalapino Burger', price: 'Rs 499 · Deal Rs 699', desc: 'Burger with a jalapeño kick.', group: 'Burgers' },
+      { name: 'Beef Grill Burger', price: 'Rs 699 · Deal Rs 899', desc: 'Grilled beef burger with BBQ sauce.', group: 'Burgers' },
+      { name: 'Chicken Grill Burger', price: 'Rs 499 · Deal Rs 699', desc: 'Grilled chicken burger.', group: 'Burgers' },
+      { name: 'Jalapeno Fries', price: 'Rs 599', desc: 'Fries topped with jalapeño flavour.', group: 'Loaded Fries' },
+      { name: 'Pizza Fries', price: 'Rs 699', desc: 'Loaded fries with pizza-style toppings.', group: 'Loaded Fries' },
+      { name: 'BBQ Fries', price: 'Rs 599', desc: 'Fries with BBQ flavour.', group: 'Loaded Fries' },
+      { name: 'Matka Fries', price: 'Ask in store', desc: 'Fries served matka-style.', group: 'Loaded Fries' },
+      { name: 'Loaded Fries', price: 'Rs 799', desc: 'A fully loaded serving of fries.', group: 'Loaded Fries' },
+      { name: 'Chicken Shawarma', price: 'Rs 199', desc: 'Chicken shawarma wrap.', group: 'Shawarma' },
+      { name: 'Kabab Shawarma', price: 'Rs 220', desc: 'Kabab shawarma wrap.', group: 'Shawarma' },
+      { name: 'Achari Shawarma', price: 'Rs 180', desc: 'Shawarma with tangy achari flavour.', group: 'Shawarma' },
+      { name: 'Zinger Shawarma', price: 'Rs 249', desc: 'Crispy zinger-style shawarma.', group: 'Shawarma' },
+      { name: 'Chic-Cheese Shawarma', price: 'Rs 249', desc: 'Chicken and cheese shawarma.', group: 'Shawarma' },
+      { name: 'FC Special Shawarma', price: 'Rs 299', desc: 'House special shawarma.', group: 'Shawarma' },
+      { name: 'Malai Shawarma', price: 'Rs 299', desc: 'Creamy malai chicken shawarma.', group: 'Shawarma' },
+      { name: 'Platter Shawarma', price: 'Rs 500', desc: 'Shawarma served as a platter.', group: 'Shawarma' },
+      { name: 'Chicken P-Roll', price: 'Rs 249', desc: 'Chicken paratha roll.', group: 'Paratha Rolls' },
+      { name: 'Achari P-Roll', price: 'Rs 249', desc: 'Tangy achari paratha roll.', group: 'Paratha Rolls' },
+      { name: 'Kabab P-Roll', price: 'Rs 250', desc: 'Kabab paratha roll.', group: 'Paratha Rolls' },
+      { name: 'FC Special P-Roll', price: 'Rs 299', desc: 'House special paratha roll.', group: 'Paratha Rolls' },
+      { name: 'Malai P-Roll', price: 'Rs 299', desc: 'Creamy malai paratha roll.', group: 'Paratha Rolls' },
+      { name: 'Arabic P-Roll', price: 'Rs 299', desc: 'Arabic-style paratha roll.', group: 'Paratha Rolls' },
+      { name: 'Zinger P-Roll', price: 'Rs 299', desc: 'Crispy zinger paratha roll.', group: 'Paratha Rolls' },
+      { name: 'Chic Cheese P-Roll', price: 'Rs 299', desc: 'Chicken and cheese paratha roll.', group: 'Paratha Rolls' },
+      { name: 'Pizza Paratha', price: 'Rs 499', desc: 'Paratha with pizza-style toppings.', group: 'Paratha Rolls' },
+      { name: 'Twister Wrap', price: 'Rs 499', desc: 'Chicken twister wrap.', group: 'Wraps' },
+      { name: 'Malai Wrap', price: 'Rs 450', desc: 'Creamy malai chicken wrap.', group: 'Wraps' },
+      { name: 'Mexican Wrap', price: 'Rs 499', desc: 'Wrap with Mexican-style seasoning.', group: 'Wraps' },
+      { name: 'FC Special Wrap', price: 'Rs 499', desc: 'House special wrap.', group: 'Wraps' },
+      { name: 'Chicken Grill Wrap', price: 'Rs 499', desc: 'Grilled chicken wrap.', group: 'Wraps' },
+      { name: 'Quarter Broast', price: 'Rs 699', desc: '1 leg, 1 thigh, fries, garlic sauce and dinner roll.', group: 'Broast' },
+      { name: 'Half Broast', price: 'Rs 1,199', desc: '2 legs, 2 thighs, fries, garlic sauce and 2 dinner rolls.', group: 'Broast' },
+      { name: 'Full Broast', price: 'Rs 2,499', desc: '4 legs, 4 thighs, fries, garlic sauce and 4 dinner rolls.', group: 'Broast' },
+      { name: 'Family Broast', price: 'Rs 4,500', desc: '8 legs, 8 thighs, fries, garlic sauce and 8 dinner rolls.', group: 'Broast' },
+      { name: 'Hot Wings · 5 pcs', price: 'Rs 399', desc: 'Crispy hot wings.', group: 'Sides & Drinks' },
+      { name: 'Hot Wings · 10 pcs', price: 'Rs 699', desc: 'Crispy hot wings.', group: 'Sides & Drinks' },
+      { name: 'Oven Baked Wings · 10 pcs', price: 'Rs 749', desc: 'Oven-baked chicken wings.', group: 'Sides & Drinks' },
+      { name: 'Honey Wings · 10 pcs', price: 'Rs 749', desc: 'Wings coated with honey flavour.', group: 'Sides & Drinks' },
+      { name: 'Nuggets · 5 pcs', price: 'Rs 349', desc: 'Crispy chicken nuggets.', group: 'Sides & Drinks' },
+      { name: 'Nuggets · 10 pcs', price: 'Rs 549', desc: 'Crispy chicken nuggets.', group: 'Sides & Drinks' },
+      { name: 'Fries · Small', price: 'Rs 249', desc: 'A small serving of fries.', group: 'Sides & Drinks' },
+      { name: 'Fries · Family', price: 'Rs 449', desc: 'A family serving of fries.', group: 'Sides & Drinks' },
+      { name: 'Chicken Strips · 10 pcs', price: 'Rs 499', desc: 'Crispy chicken strips.', group: 'Sides & Drinks' },
+      { name: 'Cheese Slice', price: 'Rs 90', desc: 'Add a cheese slice to your meal.', group: 'Sides & Drinks' },
+      { name: 'Dinner Roll', price: 'Rs 90', desc: 'Fresh dinner roll.', group: 'Sides & Drinks' },
+      { name: 'Chicken Piece · Leg', price: 'Rs 220', desc: 'Single chicken leg piece.', group: 'Sides & Drinks' },
+      { name: 'Chicken Pieces · 3-piece mix', price: 'Rs 630', desc: 'Three mixed chicken pieces.', group: 'Sides & Drinks' },
+      { name: 'Chicken Pieces · On demand', price: 'Ask in store', desc: 'Chicken pieces available on demand.', group: 'Sides & Drinks' },
+      { name: 'Water · Small', price: 'Rs 70', desc: 'Bottled water.', group: 'Sides & Drinks' },
+      { name: 'Water · Large', price: 'Rs 120', desc: 'Bottled water.', group: 'Sides & Drinks' },
+      { name: 'Drink · 250 ml', price: 'Rs 100', desc: 'Cold drink.', group: 'Sides & Drinks' },
+      { name: 'Drink · 350 ml', price: 'Rs 140', desc: 'Cold drink.', group: 'Sides & Drinks' },
+      { name: 'Drink · 1 litre', price: 'Rs 200', desc: 'Cold drink.', group: 'Sides & Drinks' },
+      { name: 'Drink · 1.5 litre', price: 'Rs 250', desc: 'Cold drink.', group: 'Sides & Drinks' },
+      { name: 'Kulfa Shake', price: 'Rs 499', desc: 'Kulfa ice cream shake.', group: 'Shakes & Beverages' },
+      { name: 'Mango Shake', price: 'Rs 499', desc: 'Mango shake.', group: 'Shakes & Beverages' },
+      { name: 'Vanilla Shake', price: 'Rs 499', desc: 'Vanilla ice cream shake.', group: 'Shakes & Beverages' },
+      { name: 'Strawberry Shake', price: 'Rs 499', desc: 'Strawberry ice cream shake.', group: 'Shakes & Beverages' },
+      { name: 'Chocolate Shake', price: 'Rs 499', desc: 'Chocolate ice cream shake.', group: 'Shakes & Beverages' },
+      { name: 'Oreo Shake', price: 'Rs 499', desc: 'Oreo cookie shake.', group: 'Shakes & Beverages' },
+      { name: 'Mint Margarita', price: 'Rs 249', desc: 'Refreshing mint margarita.', group: 'Shakes & Beverages' },
+      { name: 'Fresh Lime', price: 'Rs 150', desc: 'Fresh lime drink.', group: 'Shakes & Beverages' },
+      { name: 'Ice Cream · Single scoop', price: 'Rs 150', desc: 'Single scoop of ice cream.', group: 'Shakes & Beverages' },
+      { name: 'Ice Cream · Double scoop', price: 'Rs 300', desc: 'Double scoop of ice cream.', group: 'Shakes & Beverages' },
     ],
   },
   {
     key: 'pizza',
-    title: 'Pizza & Italian',
-    subtitle: 'Cheesy indulgence',
+    title: 'Pizza & Pasta',
+    subtitle: 'Pizzas, pasta and Italian favourites',
     items: [
-      { name: 'Crown Crust Pizza', price: 'Rs 1,450', desc: 'Stuffed cheese-filled crust with premium toppings' },
-      { name: 'Kabab Crust Pizza', price: 'Rs 1,550', desc: 'Seekh kabab stuffed crust with spicy tikka chunks' },
-      { name: 'FC Creamy Pasta', price: 'Rs 750', desc: 'Penne in rich creamy Alfredo with grilled chicken' },
+      { name: 'Chicken Tikka Pizza', price: 'Small Rs 589 · Medium Rs 1,099 · Large Rs 1,449 · XL Rs 1,999', desc: 'Chicken tikka pizza.', group: 'Pizza' },
+      { name: 'Chicken Fajita Pizza', price: 'Multiple sizes · from Rs 589', desc: 'Chicken fajita pizza.', group: 'Pizza' },
+      { name: 'Pickle Pizza', price: 'Multiple sizes · from Rs 589', desc: 'Pickle-style pizza.', group: 'Pizza' },
+      { name: 'Veggie Lover Pizza', price: 'Multiple sizes · from Rs 589', desc: 'Vegetable-topped pizza.', group: 'Pizza' },
+      { name: 'Jalapeno Pizza', price: 'Multiple sizes · from Rs 589', desc: 'Pizza with jalapeños.', group: 'Pizza' },
+      { name: 'Chicken Chapli Pizza', price: 'Multiple sizes · from Rs 589', desc: 'Chicken chapli-style pizza.', group: 'Pizza' },
+      { name: 'Supreme Pizza', price: 'Multiple sizes · from Rs 589', desc: 'Supreme-style pizza.', group: 'Pizza' },
+      { name: 'BBQ Pizza', price: 'Multiple sizes · from Rs 589', desc: 'BBQ chicken pizza.', group: 'Pizza' },
+      { name: 'Crown Crust', price: 'Medium Rs 1,099 · Large Rs 1,449 · XL Rs 1,999', desc: 'Stuffed crown crust pizza.', group: 'Pizza' },
+      { name: 'Kabab Crust', price: 'Multiple sizes · from Rs 649', desc: 'Kabab crust pizza.', group: 'Pizza' },
+      { name: 'Cheese Stuff Pizza', price: 'Multiple sizes · from Rs 589', desc: 'Pizza with a cheese-stuffed crust.', group: 'Pizza' },
+      { name: 'FC Calzone', price: 'Rs 499', desc: 'Folded, stuffed pizza.', group: 'Pizza' },
+      { name: 'Lasagna Pizza · Large', price: 'Ask in store', desc: 'Lasagna-style pizza.', group: 'Pizza' },
+      { name: 'FC Creamy Pasta', price: 'Rs 799', desc: 'House special creamy pasta.', group: 'Pasta' },
+      { name: 'Chicken Pasta', price: 'Rs 599', desc: 'Chicken pasta.', group: 'Pasta' },
+      { name: 'Macaroni Pasta', price: 'Rs 499', desc: 'Macaroni pasta.', group: 'Pasta' },
     ],
   },
   {
     key: 'bbq',
-    title: 'BBQ & Wraps',
-    subtitle: 'Smoky & tender',
+    title: 'BBQ & Grill',
+    subtitle: 'Fresh from the grill',
     items: [
-      { name: 'Malai Boti', price: 'Rs 850', desc: 'Creamy, melt-in-mouth chicken boti with raita' },
-      { name: 'Reshmi Kabab', price: 'Rs 900', desc: 'Silky minced chicken skewers, char-grilled' },
-      { name: 'Twister Wrap', price: 'Rs 450', desc: 'Crispy chicken strips with fresh veggies & sauce' },
+      { name: 'Chicken Malai Boti', price: 'Half Rs 899 · Full Rs 1,799', desc: 'Creamy grilled chicken malai boti.', group: 'BBQ' },
+      { name: 'Chicken Tikka Boti', price: 'Half Rs 799 · Full Rs 1,599', desc: 'Chicken tikka boti from the grill.', group: 'BBQ' },
+      { name: 'Beef Kabab', price: 'Half Rs 899 · Full Rs 1,799', desc: 'Grilled beef kabab.', group: 'BBQ' },
+      { name: 'Reshmi Kabab', price: 'Half Rs 999 · Full Rs 1,999', desc: 'Tender reshmi kabab.', group: 'BBQ' },
+      { name: 'Chicken Kabab', price: 'Half Rs 799 · Full Rs 1,599', desc: 'Grilled chicken kabab.', group: 'BBQ' },
+      { name: 'Chicken Achari Tikka', price: 'Half Rs 999 · Full Rs 1,999', desc: 'Chicken tikka with achari spices.', group: 'BBQ' },
+      { name: 'Chicken Cheese Kastori', price: 'Half Rs 999 · Full Rs 1,999', desc: 'Chicken cheese kastori from the grill.', group: 'BBQ' },
+      { name: 'Chicken Seekh Kabab', price: 'Rs 180 per seekh', desc: 'Grilled chicken seekh kabab.', group: 'BBQ' },
+      { name: 'Chicken Seekh Tikka', price: 'Rs 180 per seekh', desc: 'Grilled chicken tikka seekh.', group: 'BBQ' },
+      { name: 'Beef Seekh Kabab', price: 'Rs 199 per seekh', desc: 'Grilled beef seekh kabab.', group: 'BBQ' },
+      { name: 'Chicken Leg Malai', price: 'Rs 549', desc: 'Malai-marinated chicken leg.', group: 'BBQ' },
+      { name: 'Chicken Chest Malai', price: 'Rs 549', desc: 'Malai-marinated chicken breast.', group: 'BBQ' },
+      { name: 'Chicken Chest Tikka', price: 'Rs 449', desc: 'Chicken breast tikka.', group: 'BBQ' },
+      { name: 'Chicken Leg Tikka', price: 'Rs 399', desc: 'Chicken leg tikka.', group: 'BBQ' },
+      { name: 'Mixed BBQ', price: 'Half Rs 1,699 · Full Rs 3,299', desc: 'Mixed grill with beef kabab, chicken kabab, malai boti, tikka and chicken pieces.', group: 'BBQ Platters' },
+      { name: 'BBQ Sera', price: 'Half Rs 1,399 · Full Rs 2,699', desc: 'Mixed BBQ platter with beef kabab, chicken kabab, tikka and chicken pieces.', group: 'BBQ Platters' },
+      { name: 'Behari Kabab', price: 'Medium Rs 1,299 · Large Rs 1,799 · XL Rs 2,199', desc: 'Behari-style grilled kabab.', group: 'BBQ Platters' },
+      { name: 'Malai Boti', price: 'Multiple sizes · from Rs 649', desc: 'Creamy, tender grilled chicken boti.', group: 'BBQ Platters' },
     ],
   },
   {
     key: 'desi',
-    title: 'Traditional/Desi',
-    subtitle: 'Authentic family recipes',
+    title: 'Desi & Rice',
+    subtitle: 'Karahi, handi, biryani and more',
     items: [
-      { name: 'FC Special Chicken Karahi', price: 'Rs 1,650', desc: 'Signature karahi slow-cooked in desi ghee & spices' },
-      { name: 'Mutton Shinwari', price: 'Rs 2,100', desc: 'Tender mutton in rich tomato-based gravy' },
-      { name: 'Beef Afghani Pulao', price: 'Rs 1,250', desc: 'Fragrant rice with succulent beef and caramelized carrots' },
+      { name: 'FC Special Chicken Karahi', price: 'Half Rs 1,199 · Full Rs 2,199', desc: 'House special chicken karahi.', group: 'Chicken Karahi & Handi' },
+      { name: 'Chicken Karahi', price: 'Half Rs 999 · Full Rs 1,799', desc: 'Traditional chicken karahi.', group: 'Chicken Karahi & Handi' },
+      { name: 'Achari Chicken Karahi', price: 'Half Rs 1,199 · Full Rs 2,199', desc: 'Chicken karahi with achari spices.', group: 'Chicken Karahi & Handi' },
+      { name: 'Chicken Shinwari Karahi', price: 'Half Rs 1,199 · Full Rs 2,199', desc: 'Shinwari-style chicken karahi.', group: 'Chicken Karahi & Handi' },
+      { name: 'Chicken Sulemani Karahi', price: 'Half Rs 1,149 · Full Rs 2,099', desc: 'Sulemani-style chicken karahi.', group: 'Chicken Karahi & Handi' },
+      { name: 'Chicken White Karahi', price: 'Half Rs 1,199 · Full Rs 2,199', desc: 'Creamy white chicken karahi.', group: 'Chicken Karahi & Handi' },
+      { name: 'Chicken Madras Handi', price: 'Rs 1,449', desc: 'Chicken handi with Madras spices.', group: 'Chicken Karahi & Handi' },
+      { name: 'FC Special Chicken Handi', price: 'Half Rs 1,299 · Full Rs 2,399', desc: 'House special chicken handi.', group: 'Chicken Karahi & Handi' },
+      { name: 'Chicken Achari Handi', price: 'Half Rs 1,249 · Full Rs 2,299', desc: 'Chicken handi with achari spices.', group: 'Chicken Karahi & Handi' },
+      { name: 'Chicken Boneless Handi', price: 'Half Rs 1,199 · Full Rs 2,199', desc: 'Boneless chicken handi.', group: 'Chicken Karahi & Handi' },
+      { name: 'Mutton Shinwari Karahi', price: 'Half Rs 2,149 · Full Rs 3,999', desc: 'Mutton Shinwari karahi.', group: 'Mutton & Beef' },
+      { name: 'Mutton White Karahi', price: 'Half Rs 2,099 · Full Rs 4,199', desc: 'Creamy mutton white karahi.', group: 'Mutton & Beef' },
+      { name: 'Mutton Achari Karahi', price: 'Half Rs 2,149 · Full Rs 3,999', desc: 'Mutton karahi with achari spices.', group: 'Mutton & Beef' },
+      { name: 'Mutton Sulemani Karahi', price: 'Half Rs 2,099 · Full Rs 3,999', desc: 'Mutton Sulemani karahi.', group: 'Mutton & Beef' },
+      { name: 'FC Special Mutton Karahi', price: 'Half Rs 2,199 · Full Rs 4,199', desc: 'House special mutton karahi.', group: 'Mutton & Beef' },
+      { name: 'Beef Sulemani Karahi', price: 'Half Rs 1,499 · Full Rs 2,699', desc: 'Beef Sulemani karahi.', group: 'Mutton & Beef' },
+      { name: 'Beef Zaitooni Karahi', price: 'Half Rs 1,599 · Full Rs 2,699', desc: 'Beef karahi with zaitooni flavour.', group: 'Mutton & Beef' },
+      { name: 'Beef Boneless Karahi', price: 'Half Rs 1,499 · Full Rs 2,799', desc: 'Boneless beef karahi.', group: 'Mutton & Beef' },
+      { name: 'FC Special Beef White Karahi', price: 'Half Rs 1,699 · Full Rs 2,999', desc: 'House special boneless beef white karahi.', group: 'Mutton & Beef' },
+      { name: 'Chicken Biryani', price: 'Rs 300', desc: 'Chicken biryani.', group: 'Rice & Biryani' },
+      { name: 'Beef Pulao', price: 'Rs 700', desc: 'Beef pulao.', group: 'Rice & Biryani' },
+      { name: 'Chicken Pulao', price: 'Rs 500', desc: 'Chicken pulao.', group: 'Rice & Biryani' },
+      { name: 'Mutton Pulao', price: 'Rs 1,000', desc: 'Mutton pulao.', group: 'Rice & Biryani' },
+      { name: 'Beef Afghani Pulao', price: 'Rs 1,099', desc: 'Beef Afghani pulao.', group: 'Rice & Biryani' },
+      { name: 'Mutton Afghani Pulao', price: 'Rs 1,499', desc: 'Mutton Afghani pulao.', group: 'Rice & Biryani' },
+      { name: 'Mutton Matka Biryani', price: 'Rs 1,000', desc: 'Mutton matka biryani.', group: 'Rice & Biryani' },
+      { name: 'Beef Matka Biryani', price: 'Rs 700', desc: 'Beef matka biryani.', group: 'Rice & Biryani' },
+      { name: 'Chicken Matka Biryani', price: 'Rs 600', desc: 'Chicken matka biryani.', group: 'Rice & Biryani' },
+      { name: 'Plain Matka Biryani', price: 'Rs 180', desc: 'Plain matka biryani.', group: 'Rice & Biryani' },
+      { name: 'Zarda', price: 'Rs 300', desc: 'Sweet zarda rice.', group: 'Rice & Biryani' },
+      { name: 'Shahi Daal', price: 'Rs 550', desc: 'House-style shahi daal.', group: 'Sides & Extras' },
+      { name: 'Daal Mash', price: 'Rs 350', desc: 'Daal mash.', group: 'Sides & Extras' },
+      { name: 'Roti', price: 'Rs 15', desc: 'Fresh roti.', group: 'Sides & Extras' },
+      { name: 'Khamiri Roti', price: 'Rs 30', desc: 'Khamiri roti.', group: 'Sides & Extras' },
+      { name: 'Roghni Naan', price: 'Rs 60', desc: 'Roghni naan.', group: 'Sides & Extras' },
+      { name: 'Fresh Salad', price: 'Rs 120', desc: 'Freshly prepared salad.', group: 'Sides & Extras' },
     ],
   },
   {
     key: 'dessert',
-    title: 'Desserts',
-    subtitle: 'Sweet endings',
+    title: 'Desserts & More',
+    subtitle: 'Desserts, soups, Chinese and tea',
     items: [
-      { name: 'Special FC Shahi Halwa', price: 'Rs 450', desc: 'Rich semolina halwa loaded with nuts & ghee' },
-      { name: 'Lab-e-Shireen', price: 'Rs 380', desc: 'Creamy fruit trifle with vermicelli & jelly' },
+      { name: 'Gajar Halwa', price: 'Rs 999 per kg', desc: 'Traditional carrot halwa.', group: 'Desserts' },
+      { name: 'FC Special Shahi Halwa', price: 'Rs 1,599 per kg', desc: 'House special shahi halwa.', group: 'Desserts' },
+      { name: 'Egg Halwa', price: 'Rs 1,399 per kg', desc: 'Traditional egg halwa.', group: 'Desserts' },
+      { name: 'FC Special Kheer', price: 'Rs 1,499', desc: 'House special kheer.', group: 'Desserts' },
+      { name: 'Fruit Trifle', price: 'Rs 999', desc: 'Fruit trifle.', group: 'Desserts' },
+      { name: 'Hot & Sour Chicken Soup', price: 'Rs 999', desc: 'Chicken hot and sour soup.', group: 'Soups & Salads' },
+      { name: 'FC Special Soup', price: 'Rs 1,299', desc: 'House special soup.', group: 'Soups & Salads' },
+      { name: 'Chicken Corn Soup', price: 'Rs 999', desc: 'Chicken corn soup.', group: 'Soups & Salads' },
+      { name: 'Chicken Thai Soup', price: 'Rs 799', desc: 'Chicken Thai soup.', group: 'Soups & Salads' },
+      { name: 'FC Special Russian Salad', price: 'Rs 1,200', desc: 'House special Russian salad.', group: 'Soups & Salads' },
+      { name: 'Russian Salad', price: 'Rs 600–1,000', desc: 'Russian salad; price varies by serving.', group: 'Soups & Salads' },
+      { name: 'Kachumar Salad', price: 'Rs 199', desc: 'Fresh kachumar salad.', group: 'Soups & Salads' },
+      { name: 'Chicken Fried Rice', price: 'Rs 600', desc: 'Chicken fried rice.', group: 'Chinese' },
+      { name: 'Egg Fried Rice', price: 'Rs 550', desc: 'Egg fried rice.', group: 'Chinese' },
+      { name: 'Chicken Masala Rice', price: 'Rs 650', desc: 'Chicken masala rice.', group: 'Chinese' },
+      { name: 'Vegetable Rice', price: 'Rs 450', desc: 'Vegetable fried rice.', group: 'Chinese' },
+      { name: 'FC Special Rice', price: 'Rs 700', desc: 'House special rice.', group: 'Chinese' },
+      { name: 'Chicken Manchurian', price: 'Rs 700', desc: 'Chicken Manchurian.', group: 'Chinese' },
+      { name: 'Chicken Chili Dry', price: 'Rs 800', desc: 'Chicken chili dry.', group: 'Chinese' },
+      { name: 'FC Special Chicken Manchow', price: 'Rs 900', desc: 'House special chicken Manchow.', group: 'Chinese' },
+      { name: 'Chicken Shashlik Rice', price: 'Rs 1,100', desc: 'Chicken shashlik with rice.', group: 'Chinese' },
+      { name: 'Chicken Black Pepper Rice', price: 'Rs 1,100', desc: 'Chicken black pepper with rice.', group: 'Chinese' },
+      { name: 'Chicken Manchurian Rice', price: 'Rs 1,150', desc: 'Chicken Manchurian served with rice.', group: 'Chinese' },
+      { name: 'Tea', price: 'Rs 80', desc: 'Freshly brewed tea.', group: 'Tea & Coffee' },
+      { name: 'FC Special Tea', price: 'Rs 100', desc: 'House special tea.', group: 'Tea & Coffee' },
+      { name: 'Kashmiri Tea', price: 'Rs 150', desc: 'Kashmiri-style tea.', group: 'Tea & Coffee' },
+      { name: 'FC Special Qahwa', price: 'Rs 80', desc: 'House special qahwa.', group: 'Tea & Coffee' },
     ],
   },
 ];
 
 const deals = [
   {
-    title: 'Pizza D-5',
+    title: 'Pizza Deal D-1',
+    tag: 'Pizza Deal',
+    price: 'Rs 1,399',
+    items: ['1 Small Pizza', '2 Zinger Burgers'],
+  },
+  {
+    title: 'Pizza Deal D-2',
+    tag: 'Pizza Deal',
+    price: 'Rs 1,790',
+    items: ['1 Small Tikka Pizza', '2 Reggy Burgers'],
+  },
+  {
+    title: 'Pizza Deal D-3',
+    tag: 'Pizza Deal',
+    price: 'Rs 2,999',
+    items: ['1 Large Tikka Pizza', '1 Litre Drink'],
+  },
+  {
+    title: 'Pizza Deal D-4',
+    tag: 'Pizza Deal',
+    price: 'Rs 2,999',
+    items: ['1 Large Fajita Pizza', '4 Zinger Burgers', '1.5 Litre Drink'],
+  },
+  {
+    title: 'Pizza Deal D-5',
     tag: 'Family Feast',
+    price: 'Rs 4,999',
+    items: ['1 Extra Large Pizza', '5 Zinger Burgers'],
+  },
+  {
+    title: 'Pizza Deal D-6',
+    tag: 'Pizza Deal',
+    price: 'Rs 1,299',
+    items: ['5 Hot Wings', '1 Small Pizza', '1 Regular Fries', '1 Litre Drink'],
+  },
+  {
+    title: 'Pizza Deal D-7',
+    tag: 'Family Feast',
+    price: 'Rs 4,499',
+    items: ['2 Medium Tikka & Fajita Pizzas', '4 Chicken Shawarmas', '2 Kabab Bites', 'Regular Fries', '1.5 Litre Drink'],
+  },
+  {
+    title: 'Family Deal',
+    tag: 'Family Feast',
+    price: 'Rs 6,399',
+    items: ['1 Extra Large Pizza', '10 Hot Wings', 'Family Fries', '1.5 Litre Drink'],
+  },
+  {
+    title: 'Late Night Deal 1',
+    tag: 'After 10 PM · Until Closing',
+    price: 'Rs 2,199',
+    items: ['2 Regular 10-inch Pizzas', '1.5 Litre Drink'],
+  },
+  {
+    title: 'Late Night Deal 2',
+    tag: 'After 10 PM · Until Closing',
+    price: 'Rs 2,999',
+    items: ['2 Regular 13-inch Pizzas', '1.5 Litre Drink'],
+  },
+  {
+    title: 'Late Night Deal 3',
+    tag: 'After 10 PM · Until Closing',
     price: 'Rs 3,999',
-    items: [
-      '1 Extra Large Pizza',
-      '5 Zinger Burgers',
-      '10 Hot Wings',
-      '1 Family Fries',
-      '1.5L Drink',
-    ],
+    items: ['2 Regular 16-inch Pizzas', '1.5 Litre Drink'],
+  },
+  {
+    title: 'FC Deal 1',
+    tag: 'FC Special Deal',
+    price: 'Rs 1,399',
+    items: ['2 Beef Grill Burgers', '500 ml Drink'],
+  },
+  {
+    title: 'FC Deal 2',
+    tag: 'FC Special Deal',
+    price: 'Rs 1,149',
+    items: ['1 Reggy Burger', '1 Chapli Burger', '1 Small Pizza', '1 Litre Drink'],
+  },
+  {
+    title: 'FC Deal 3',
+    tag: 'FC Special Deal',
+    price: 'Rs 1,799',
+    items: ['1 Large Fries', '1.5 Litre Drink'],
+  },
+  {
+    title: 'FC Deal 4',
+    tag: 'FC Special Deal',
+    price: 'Rs 2,599',
+    items: ['1 Medium Tikka Pizza', '1 Half Rice Platter'],
+  },
+  {
+    title: 'FC Deal 5',
+    tag: 'FC Special Deal',
+    price: 'Rs 3,499',
+    items: ['4 Zinger Burgers'],
+  },
+  {
+    title: 'FC Deal 6',
+    tag: 'FC Special Deal',
+    price: 'Rs 3,599',
+    items: ['1 Medium Pizza', '1 Arabian Broast', '1 Macaroni Pasta', '1 kg Dhaka Chicken', '1 Large Fries', '1.5 Litre Drink'],
   },
   {
     title: 'FC Special Birthday Deal',
-    tag: 'Party Package',
-    price: 'Rs 8,999',
-    items: [
-      '2 Extra Large Pizzas',
-      '20pcs Nuggets',
-      'Special Handi',
-      'Chicken Kabab',
-      '3 Full Biryani',
-      '1 Pound Free Cake',
-      '& more surprises',
-    ],
+    tag: 'Party Package · 6–8 People',
+    price: 'Rs 10,999',
+    items: ['2 Extra Large Pizzas', '20 Nuggets', '3 Family Fries', '1 kg FC Special Handi', '1 kg Chicken Kabab', '3 Full Chicken Biryani', '4 Mint Ritas', '2 Fresh Salads', '1.5 Litre Drink', '1.5 Litre Water', '20 Rotis', '1 Pound Birthday Cake'],
+  },
+  {
+    title: 'Quarter Arabian Broast',
+    tag: 'Arabian Broast',
+    price: 'Rs 699',
+    items: ['1 Leg & 1 Thigh', 'Garlic Sauce', 'Fries', 'Dinner Roll'],
+  },
+  {
+    title: 'Half Arabian Broast',
+    tag: 'Arabian Broast',
+    price: 'Rs 1,199',
+    items: ['2 Legs & 2 Thighs', 'Garlic Sauce', 'Fries', '2 Dinner Rolls'],
+  },
+  {
+    title: 'Full Arabian Broast',
+    tag: 'Arabian Broast',
+    price: 'Rs 2,499',
+    items: ['4 Legs & 4 Thighs', 'Garlic Sauce', 'Fries', '4 Dinner Rolls'],
+  },
+  {
+    title: 'Family Arabian Broast',
+    tag: 'Arabian Broast',
+    price: 'Rs 4,500',
+    items: ['8 Legs & 8 Thighs', '4 Garlic Sauces', 'Fries', '8 Dinner Rolls'],
   },
 ];
 
@@ -308,21 +576,27 @@ const MenuItems = memo(function MenuItems({
       className="grid gap-5 sm:grid-cols-2"
     >
       {items.map((item, i) => (
-        <motion.div
-          key={item.name}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.35, delay: i * 0.06 }}
-          className="group rounded-2xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur-sm transition-colors hover:border-[#fab026]/40 hover:bg-white/[0.06]"
-        >
-          <div className="flex items-start justify-between gap-4">
-            <h3 className="font-serif text-xl font-semibold text-white transition-colors group-hover:text-[#fab026]">
-              {item.name}
+        <div key={item.name} className="contents">
+          {item.group !== items[i - 1]?.group && (
+            <h3 className="col-span-full mt-5 border-b border-white/10 pb-3 font-serif text-2xl font-semibold text-[#fab026] first:mt-0">
+              {item.group}
             </h3>
-            <span className="whitespace-nowrap font-bold text-[#fab026]">{item.price}</span>
-          </div>
-          <p className="mt-2 text-sm leading-relaxed text-white/60">{item.desc}</p>
-        </motion.div>
+          )}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.35, delay: Math.min(i, 8) * 0.03 }}
+            className="group rounded-2xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur-sm transition-colors hover:border-[#fab026]/40 hover:bg-white/[0.06]"
+          >
+            <div className="flex items-start justify-between gap-4">
+              <h4 className="font-serif text-xl font-semibold text-white transition-colors group-hover:text-[#fab026]">
+                {item.name}
+              </h4>
+              <span className="text-right font-bold text-[#fab026]">{item.price}</span>
+            </div>
+            <p className="mt-2 text-sm leading-relaxed text-white/60">{item.desc}</p>
+          </motion.div>
+        </div>
       ))}
     </motion.div>
   );
@@ -351,7 +625,7 @@ function Menu({
           <span className="font-serif text-sm uppercase tracking-[0.2em] text-[#fab026]">Discover</span>
           <h2 className="mt-3 font-serif text-[clamp(2.5rem,6vw,4.5rem)] font-semibold text-white">Our Menu</h2>
           <p className="mx-auto mt-4 max-w-xl text-white/60">
-            Hover a category to transform the 3D scene, or tap through to build your perfect order.
+            Browse our food and drinks, or explore family deals made for sharing.
           </p>
         </motion.div>
 
